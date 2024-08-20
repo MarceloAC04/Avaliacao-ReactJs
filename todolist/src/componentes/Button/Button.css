@@ -1,0 +1,28 @@
+@font-face {
+    font-family: OpenSans-Bold;
+    src: url(../../assets/fonts/static/OpenSans-Bold.ttf);
+}
+
+.nova-tarefa {
+    width: 201px;
+    height: 49px;
+    background-color: #6C45CE;
+    font-family: OpenSans-Bold;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #fff;
+    margin-left: 35%;
+}
+
+.confirmar-tarefa {
+    width: 322px;
+    height: 64px;
+    background-color: #6C45CE;
+    font-family: OpenSans-Bold;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    align-self: center;
+}

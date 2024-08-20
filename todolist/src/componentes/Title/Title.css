@@ -1,0 +1,13 @@
+@font-face {
+    font-family: Open-sans;
+    src: url("../../assets/fonts/static/OpenSans-Medium.ttf");
+}
+
+.title {
+    width: 100%;
+    font-family: Open-sans;
+    font-size: 24px;
+    text-transform: bold;
+    text-align: center;
+    align-self: flex-start; 
+}
