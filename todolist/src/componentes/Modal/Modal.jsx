@@ -6,17 +6,10 @@ import "./Modal.css"
 const Modal = ({
   modalTitle = "Descreva sua tarefa",
   tarefaText = "Exemplo de descrição",
-  dados,
   showHideModal = false,
+  fnPost = null
 }) => {
   const [nomeTarefa, setNomeTarefa] = useState("");
-
-  function post(nomeTarefa) {
-    dados.push({"id": (dados.length + 1), "nome": nomeTarefa, "feita": false})
-    console.log(dados)
-    return dados;
-  }
-
   return (
 
     <div className="modal">
@@ -31,10 +24,12 @@ const Modal = ({
         <Button
           classe={"confirmar-tarefa"}
           textButton={"Confirmar tarefa"}
-          onClick={() => { 
-            post(nomeTarefa)
-            showHideModal(true) }}
-           />
+          onClick={() => {
+            fnPost(nomeTarefa)
+            showHideModal(true)
+            setNomeTarefa('');
+          }}
+        />
       </div>
     </div>
   );

@@ -35,3 +35,9 @@
     font-family: OpenSansSemiBold;
     font-size: 15px;
 }
+
+.tab-tarefa-data_title_checked {
+    font-family: OpenSansSemiBold;
+    font-size: 15px;
+    color: white;
+}
