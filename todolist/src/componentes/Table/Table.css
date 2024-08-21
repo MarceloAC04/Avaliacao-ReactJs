@@ -1,0 +1,37 @@
+@font-face {
+    font-family: OpenSansSemiBold;
+    src: url('../../assets/fonts/static/OpenSans-SemiBold.ttf');
+}
+
+
+.tab-tarefa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.tab-tarefa-data{
+    width: 674px;
+    height: 61px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FCFCFC; 
+}
+
+.tab-tarefa-data-checked{
+    background-color: #6C45CE; 
+}
+
+.tab-tarefa-data_data {
+    display: flex;
+    align-items: center;
+}
+
+.tab-tarefa-data_title {
+    font-family: OpenSansSemiBold;
+    font-size: 15px;
+}

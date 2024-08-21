@@ -20,7 +20,8 @@
     height: 64px;
     background-color: #6C45CE;
     font-family: OpenSans-Bold;
-    border: 1px solid #fff;
+    font-size: 23px;
+    border: 2px solid #fff;
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
