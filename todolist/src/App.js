@@ -3,7 +3,7 @@ import Title from './componentes/Title/Title'
 import './App.css';
 import Input from './componentes/Input/Input';
 import Button from './componentes/Button/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from './componentes/Modal/Modal';
 import Table from './componentes/Table/Table';
 
@@ -14,6 +14,9 @@ function App() {
     {"id": 1, "nome": "Começar a execução do projeto", "status": false },
     {"id": 2, "nome": "Começar a execução do projeto", "status": false }
   ]);
+
+  const [editTarefa, setEditTarefa] = useState(null);
+  const [editIndex, setEditIndex] = useState(null);
 
   const showHideModal = () => {
     setShowModal(showModal ? false : true);
@@ -35,6 +38,34 @@ function App() {
     setTarefas(novasTarefas);
   }
 
+  function deleteTarefa(index) {
+    const novasTarefas = tarefas.filter((tarefa => tarefa.id !== index));
+    setTarefas(novasTarefas);
+  }
+
+  function editarTarefa(index, nome) {
+    const novasTarefas = tarefas.map((tarefa) =>
+      tarefa.id === index ? { ...tarefa,  nome } : tarefa
+    );
+    setTarefas(novasTarefas);
+  }
+
+  function modalEdit(index) {
+    setEditIndex(index)
+    setEditTarefa(tarefas[index])
+    setShowModal(true)
+  }
+
+  function closeModalEdition() {
+    setEditIndex(null);
+    setEditTarefa(null);
+    setShowModal(false)
+  }
+
+  useEffect(() => {
+    console.log(editIndex, editTarefa);
+  })
+
     return (
       <div className="App">
         <Container>
@@ -43,6 +74,8 @@ function App() {
           <Table
             dados={tarefas}
             checkedTarefa={checkedTarefa}
+            deleteTarefa={deleteTarefa}
+            editaTarefa={modalEdit}
           />
         </Container>
         <Button
@@ -56,7 +89,11 @@ function App() {
           <Modal
             dados={tarefas}
             showHideModal={showHideModal}
+            tarefaEdit={editTarefa}
+            indexEdit={editIndex}
             fnPost={post}
+            fnEdit={editarTarefa}
+            closeEdition={closeModalEdition}
           />
         ) : (null)}
       </div>
