@@ -1,5 +1,5 @@
-import Container from './componentes/Container/Container'
-import Title from './componentes/Title/Title'
+import Container from './componentes/Container/Container';
+import Title from './componentes/Title/Title';
 import './App.css';
 import Input from './componentes/Input/Input';
 import Button from './componentes/Button/Button';
@@ -12,7 +12,7 @@ function App() {
 
   const [tarefas, setTarefas] = useState([
     {"id": 1, "nome": "Começar a execução do projeto", "status": false },
-    {"id": 2, "nome": "Começar a execução do projeto", "status": false }
+    {"id": 2, "nome": "Começar a execução do projeto2", "status": false }
   ]);
 
   const [editTarefa, setEditTarefa] = useState(null);
@@ -44,6 +44,7 @@ function App() {
   }
 
   function editarTarefa(index, nome) {
+    console.log(index);
     const novasTarefas = tarefas.map((tarefa) =>
       tarefa.id === index ? { ...tarefa,  nome } : tarefa
     );
@@ -52,7 +53,7 @@ function App() {
 
   function modalEdit(index) {
     setEditIndex(index)
-    setEditTarefa(tarefas[index])
+    setEditTarefa(tarefas[index - 1])
     setShowModal(true)
   }
 
@@ -63,7 +64,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(editIndex, editTarefa);
+    console.log(editIndex);
   })
 
     return (
