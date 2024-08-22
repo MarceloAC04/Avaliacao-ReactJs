@@ -8,40 +8,42 @@
     src: url('../../assets/fonts/Roboto-Medium.ttf');
 }
 
-
-
-
 #filter {
-    width: 308px;
-    height: 42px;
+    width: 250px;
+    height: 38px;
     border-radius: 8px;
-    border: 2px solid #fff;
+    border: transparent;
     background: transparent;
-    margin-top: 30px;
 }
 
 #filter::placeholder {
     font-family: roboto;
     font-size: 15px;
     text-align: right;
-    padding-right: 2%;
     color: #fff;
 }
 
 #filter:focus {
     color: #fff;
+    outline-width: 0;
 }
 
 #description {
     width: 577px;
     height: 177px;
+    padding: 10px;
+    margin-bottom: 10px;
     border-radius: 8px;
+    color: #fff;
     border: 2px solid #fff;
     background: transparent;
+    position: relative;
 }
 
 #description::placeholder {
+    position: absolute;
     padding-left: 2%;
+    top: 20px;
     font-size: 18px;
     font-family: robotoMedium;
     color: #fff;
@@ -49,6 +51,7 @@
 
 #description:focus {
     color: #fff;
+    outline-width: 0;
 }
 
 #check {

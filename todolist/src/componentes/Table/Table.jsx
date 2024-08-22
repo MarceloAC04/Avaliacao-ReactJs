@@ -5,7 +5,7 @@ import { TiDelete } from "react-icons/ti";
 import { FiEdit2 } from "react-icons/fi";
 
 
-const Table = ({ dados, checkedTarefa, deleteTarefa, editaTarefa}) => {
+const Table = ({ dados, checkedTarefa, deleteTarefa, editaTarefa }) => {
     const handleChange = (e) => {
         checkedTarefa(e.id, !e.status)
     }
@@ -38,14 +38,13 @@ const Table = ({ dados, checkedTarefa, deleteTarefa, editaTarefa}) => {
                                     textButton={<TiDelete size={27} color={`${e.status ? "#FCFCFC" : "#1E123B"}`} />}
                                     onClick={() => handleDelete(e)}
                                 />
-                            </td>
-                            <td className="tab-tarefa-data_data">
                                 <Button
                                     classe={`tabela-button ${e.status ? "checked-tabela-button" : "nochecked-tabela-button"}`}
                                     textButton={<FiEdit2 size={20} color={`${e.status ? "#FCFCFC" : "#1E123B"}`} />}
                                     onClick={() => handleEdit(e)}
                                 />
                             </td>
+
                         </tr>
                     )
                 }))}

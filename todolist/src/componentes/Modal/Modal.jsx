@@ -9,7 +9,7 @@ const Modal = ({
   showHideModal = false,
   fnPost = null,
   fnEdit = null,
-  tarefaEdit, 
+  tarefaEdit,
   indexEdit,
   closeEdition
 }) => {
@@ -38,17 +38,19 @@ const Modal = ({
     <div className="modal">
       <div className="modal-box">
         <h1 className="modal-title">{modalTitle}</h1>
-        <Input
-          id={"description"}
-          value={nomeTarefa}
-          fnChange={(e) => setNomeTarefa(e.target.value)}
-          type={"textarea"}
-          placeholder={tarefaText} />
-        <Button
-          classe={"confirmar-tarefa"}
-          textButton={"Confirmar tarefa"}
-          onClick={handleSubmit}
-        />
+        <form onSubmit={handleSubmit} className="modal-form">
+          <Input
+            id={"description"}
+            value={nomeTarefa}
+            fnChange={(e) => setNomeTarefa(e.target.value)}
+            type={"textarea"}
+            placeholder={tarefaText} />
+          <Button
+            classe={"confirmar-tarefa"}
+            textButton={"Confirmar tarefa"}
+            onClick={handleSubmit}
+          />
+        </form>
       </div>
     </div>
   );

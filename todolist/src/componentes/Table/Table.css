@@ -14,10 +14,12 @@
 
 .tab-tarefa-data{
     width: 674px;
-    height: 61px;
+    height: 51px;
+    padding: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     background-color: #FCFCFC; 
 }

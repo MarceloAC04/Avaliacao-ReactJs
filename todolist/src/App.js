@@ -6,17 +6,23 @@ import Button from './componentes/Button/Button';
 import { useEffect, useState } from 'react';
 import Modal from './componentes/Modal/Modal';
 import Table from './componentes/Table/Table';
+import { FaSearch } from 'react-icons/fa';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
 
   const [tarefas, setTarefas] = useState([
-    {"id": 1, "nome": "Começar a execução do projeto", "status": false },
-    {"id": 2, "nome": "Começar a execução do projeto2", "status": false }
+    { "id": 1, "nome": "Começar a execução do projeto", "status": false },
+    { "id": 2, "nome": "Começar a execução do projeto2", "status": false }
   ]);
 
+  const [listTarefas, setListTarefas] = useState([]);
   const [editTarefa, setEditTarefa] = useState(null);
   const [editIndex, setEditIndex] = useState(null);
+  const [searchTarefa, setSearchTarefa] = useState("");
+  const tarefasFiltradas = tarefas.filter(tarefa =>
+    tarefa.nome.toLowerCase().includes(searchTarefa.toLowerCase())
+  )
 
   const showHideModal = () => {
     setShowModal(showModal ? false : true);
@@ -24,7 +30,7 @@ function App() {
 
   function post(nomeTarefa) {
     const novaTarefa = {
-      id: tarefas.length+ 1,
+      id: tarefas.length + 1,
       nome: nomeTarefa,
       status: false
     };
@@ -33,7 +39,7 @@ function App() {
 
   function checkedTarefa(index) {
     const novasTarefas = tarefas.map((tarefa) =>
-      tarefa.id === index? { ...tarefa, status: true } : tarefa
+      tarefa.id === index ? (tarefa.status === true ? { ...tarefa, status: false } : { ...tarefa, status: true }) : tarefa
     );
     setTarefas(novasTarefas);
   }
@@ -44,9 +50,8 @@ function App() {
   }
 
   function editarTarefa(index, nome) {
-    console.log(index);
     const novasTarefas = tarefas.map((tarefa) =>
-      tarefa.id === index ? { ...tarefa,  nome } : tarefa
+      tarefa.id === index ? { ...tarefa, nome } : tarefa
     );
     setTarefas(novasTarefas);
   }
@@ -64,40 +69,56 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(editIndex);
-  })
+    if (searchTarefa != "") {
+      setListTarefas(tarefasFiltradas);
+    }
+    else {
+      setListTarefas(tarefas);
+    }
+  }, [searchTarefa])
 
-    return (
-      <div className="App">
-        <Container>
-          <Title titleText={"Quarta-Feira, 21 de Agosto"} color="#ffff" />
-          <Input id={"filter"} placeholder={"Procurar tarefa"} />
-          <Table
-            dados={tarefas}
-            checkedTarefa={checkedTarefa}
-            deleteTarefa={deleteTarefa}
-            editaTarefa={modalEdit}
+  useEffect(() => {
+    setListTarefas(tarefas)
+  }, [tarefas])
+
+  return (
+    <div className="App">
+      <Container>
+        <Title titleText={"Quarta-Feira, 21 de Agosto"} color="#ffff" />
+        <label className='filtro'>
+          <FaSearch size={20} color='#FFFF'/>
+          <Input
+            id={"filter"}
+            fnChange={(e) => setSearchTarefa(e.target.value)}
+            placeholder={"Procurar tarefa"}
           />
-        </Container>
-        <Button
-          classe={"nova-tarefa"}
-          type={"submit"}
-          textButton={"Nova Tarefa"}
-          onClick={() => setShowModal(true)}
+        </label>
+        <Table
+          dados={listTarefas}
+          checkedTarefa={checkedTarefa}
+          deleteTarefa={deleteTarefa}
+          editaTarefa={modalEdit}
         />
+      </Container>
+      <Button
+        classe={"nova-tarefa"}
+        type={"submit"}
+        textButton={"Nova Tarefa"}
+        onClick={() => setShowModal(true)}
+      />
 
-        {showModal ? (
-          <Modal
-            dados={tarefas}
-            showHideModal={showHideModal}
-            tarefaEdit={editTarefa}
-            indexEdit={editIndex}
-            fnPost={post}
-            fnEdit={editarTarefa}
-            closeEdition={closeModalEdition}
-          />
-        ) : (null)}
-      </div>
-    );
-  }
+      {showModal ? (
+        <Modal
+          dados={listTarefas}
+          showHideModal={showHideModal}
+          tarefaEdit={editTarefa}
+          indexEdit={editIndex}
+          fnPost={post}
+          fnEdit={editarTarefa}
+          closeEdition={closeModalEdition}
+        />
+      ) : (null)}
+    </div>
+  );
+}
 export default App;

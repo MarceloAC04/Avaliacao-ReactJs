@@ -3,7 +3,6 @@ import './Input.css'
 
 const Input = ({ fnChange, type, placeholder, name, id, value}) => {
     return (
-      <>
         <input
           type={type}
           placeholder={placeholder}
@@ -13,7 +12,6 @@ const Input = ({ fnChange, type, placeholder, name, id, value}) => {
           onChange={fnChange}
           autoComplete="off"
         />
-      </>
     );
   };
   

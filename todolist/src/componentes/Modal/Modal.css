@@ -38,3 +38,8 @@
     text-align: center;
     align-self: flex-start; 
 }
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+}

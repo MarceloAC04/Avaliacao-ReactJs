@@ -18,6 +18,7 @@
 .confirmar-tarefa {
     width: 322px;
     height: 64px;
+    margin-top: 40px;
     background-color: #6C45CE;
     font-family: OpenSans-Bold;
     font-size: 23px;
@@ -31,6 +32,7 @@
 .tabela-button {
     width: 37px;
     height: 37px;
+    margin-left: 90px;
     border: none;
     border-radius: 8px;
     color: white;
